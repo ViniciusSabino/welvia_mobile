@@ -2,16 +2,6 @@ import { View, Text, FlatList, TouchableHighlight } from 'react-native';
 
 import { styles } from './CurrentIncomes.styles';
 
-const Income = ({ income }: any) => (
-  <TouchableHighlight onPress={() => alert('teste')}>
-    <View style={styles.income}>
-      <Text style={styles.incomeInfo}>{income.date}</Text>
-      <Text style={styles.incomeInfo}>{income.amount}</Text>
-      <Text style={styles.incomeInfo}>{income.type}</Text>
-    </View>
-  </TouchableHighlight>
-);
-
 const COLUMN = {
   account: 'Conta',
   tipo: 'Tipo',
@@ -92,17 +82,35 @@ export function CurrentIncomes() {
     <View style={styles.container}>
       <Text style={styles.title}>Entradas de Março</Text>
       <View style={styles.headers}>
-        <Text style={styles.headerText}>{COLUMN.date}</Text>
-        <Text style={styles.headerText}>{COLUMN.amount}</Text>
-        <Text style={styles.headerText}>{COLUMN.tipo}</Text>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>{COLUMN.date}</Text>
+        </View>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>{COLUMN.amount}</Text>
+        </View>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>{COLUMN.tipo}</Text>
+        </View>
       </View>
-      <View style={styles.body}>
-        <FlatList
-          data={DATA}
-          renderItem={({ item, index }) => <Income income={item} index={index} />}
-          keyExtractor={(item) => item.id}
-        />
-      </View>
+      <FlatList
+        data={DATA}
+        renderItem={({ item }) => (
+          <TouchableHighlight onPress={() => alert('teste')}>
+            <View style={styles.row}>
+              <View style={styles.income}>
+                <Text style={styles.incomeText}>{item.date}</Text>
+              </View>
+              <View style={styles.income}>
+                <Text style={styles.incomeText}>{item.amount}</Text>
+              </View>
+              <View style={styles.income}>
+                <Text style={styles.incomeText}>{item.type}</Text>
+              </View>
+            </View>
+          </TouchableHighlight>
+        )}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 }

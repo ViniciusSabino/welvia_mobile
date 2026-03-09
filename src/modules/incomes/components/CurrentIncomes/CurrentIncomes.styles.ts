@@ -18,33 +18,30 @@ export const styles = StyleSheet.create({
   },
   headers: {
     flexDirection: 'row',
-    gap: 100,
-    justifyContent: 'center',
+  },
+  header: {
+    flex: 1,
+    alignItems: 'center',
   },
   headerText: {
     color: darkColors.textSecondary,
     fontFamily: fonts.bold,
     fontSize: fontSizes.body,
   },
-  body: {
-    flex: 1,
-    marginTop: spacing.xs,
-    marginBottom: spacing.xs,
+  row: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+    paddingBottom: spacing.sm,
   },
   income: {
-    backgroundColor: darkColors.highlight,
-    flexDirection: 'row',
-    gap: spacing.xl,
-    marginVertical: spacing.xs,
-    paddingLeft: spacing.xs,
-    paddingBottom: spacing.sm,
-    paddingTop: spacing.sm,
+    alignItems: 'center',
+    flex: 1,
+    paddingBottom: spacing.md,
+    paddingTop: spacing.md,
   },
-  incomeInfo: {
+  incomeText: {
     color: darkColors.textPrimary,
     fontFamily: fonts.regular,
     fontSize: fontSizes.body,
-    paddingLeft: spacing.md,
-    paddingRight: spacing.md,
   },
 });

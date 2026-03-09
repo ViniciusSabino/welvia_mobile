@@ -57,7 +57,6 @@ export function EstimatedReleases() {
           ></PieChart>
         </View>
         <FlatList
-          scrollEnabled={false}
           data={pieChartLegend}
           renderItem={({ item }) => (
             <View style={styles.legendRow} key={item.label}>
