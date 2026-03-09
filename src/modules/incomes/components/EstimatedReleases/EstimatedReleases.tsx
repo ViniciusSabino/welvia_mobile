@@ -37,7 +37,14 @@ export function EstimatedReleases() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Lançamentos Estimados do Mês</Text>
-      <View style={styles.body}>
+      <Text style={styles.totalText}>
+        {AmountUtil.formatAmount(
+          pieChartLegend.reduce((acc, item) => {
+            return acc + item.value;
+          }, 0),
+        )}
+      </Text>
+      <View>
         <View style={styles.chartContainer}>
           <PieChart<Release>
             data={data}
@@ -72,16 +79,6 @@ export function EstimatedReleases() {
             </View>
           )}
         ></FlatList>
-        <View style={styles.footer}>
-          <Text style={styles.totalText}>
-            Estimado para Março:{' '}
-            {AmountUtil.formatAmount(
-              pieChartLegend.reduce((acc, item) => {
-                return acc + item.value;
-              }, 0),
-            )}
-          </Text>
-        </View>
       </View>
     </View>
   );

@@ -15,7 +15,14 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     textTransform: 'uppercase',
   },
-  body: {},
+  totalText: {
+    color: darkColors.textSecondary,
+    fontFamily: fonts.bold,
+    fontSize: fontSizes.h3,
+    margin: spacing.xs,
+    textAlign: 'center',
+    textTransform: 'uppercase',
+  },
   chartContainer: {
     alignItems: 'center',
   },
@@ -37,14 +44,5 @@ export const styles = StyleSheet.create({
     color: darkColors.primary,
     fontSize: fontSizes.body,
     paddingTop: spacing.xs,
-  },
-  footer: {
-    padding: spacing.sm,
-  },
-  totalText: {
-    color: darkColors.primary,
-    fontFamily: fonts.regular,
-    fontSize: fontSizes.body,
-    textAlign: 'center',
   },
 });

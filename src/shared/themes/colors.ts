@@ -17,7 +17,7 @@ export const darkColors = {
   highlight: '#111111',
   primary: '#becac4',
   textPrimary: '#e3e2e2',
-  textSecondary: '#B9C4BF',
+  textSecondary: '#628375',
   divider: '#201f1f',
   success: '#2ECC71',
   error: '#E74C3C',
