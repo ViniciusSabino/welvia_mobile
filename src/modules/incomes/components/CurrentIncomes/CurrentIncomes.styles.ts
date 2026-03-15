@@ -31,13 +31,12 @@ export const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     gap: spacing.sm,
-    paddingBottom: spacing.sm,
   },
   income: {
     alignItems: 'center',
     flex: 1,
-    paddingBottom: spacing.md,
-    paddingTop: spacing.md,
+    paddingBottom: 10,
+    paddingTop: 10,
   },
   incomeText: {
     color: darkColors.textPrimary,
