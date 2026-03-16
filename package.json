@@ -4,6 +4,7 @@
   "main": "src/app/index.ts",
   "scripts": {
     "start": "expo start",
+    "start:tunnel": "expo start --tunnel",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
@@ -12,8 +13,11 @@
     "@expo-google-fonts/montserrat": "^0.4.2",
     "@react-navigation/drawer": "^7.9.2",
     "@react-navigation/native": "^7.1.31",
+    "@tanstack/react-query": "^5.90.21",
+    "axios": "^1.13.6",
     "decimal.js": "^10.6.0",
     "expo": "~54.0.0",
+    "expo-constants": "~18.0.13",
     "expo-font": "~14.0.11",
     "expo-splash-screen": "~31.0.13",
     "expo-status-bar": "~3.0.9",
@@ -24,7 +28,8 @@
     "react-native-reanimated": "~4.1.1",
     "react-native-safe-area-context": "^5.7.0",
     "react-native-svg": "15.12.1",
-    "react-native-worklets": "0.5.1"
+    "react-native-worklets": "0.5.1",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/decimal.js": "^7.4.3",

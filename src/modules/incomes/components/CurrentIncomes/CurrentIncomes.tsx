@@ -1,116 +1,60 @@
-import { View, Text, FlatList, TouchableHighlight } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableHighlight,
+  ActivityIndicator,
+} from 'react-native';
 
 import { styles } from './CurrentIncomes.styles';
+import { CurrentIncomesColumns, IncomeStatus } from './CurrentIncomes.constants';
+import { CurrentIncomesProps } from './CurrentIncomes.types';
+import { darkColors } from '@/shared/themes';
 
-const COLUMN = {
-  account: 'Conta',
-  tipo: 'Tipo',
-  amount: 'Valor',
-  date: 'Data',
-  description: 'Descrição',
-};
-
-const DATA = [
-  {
-    id: '1',
-    account: 'C6 Bank',
-    type: 'Salário',
-    amount: 'R$ 900,00',
-    date: '01/03/2026',
-    description: 'Uma descrição aqui',
-  },
-  {
-    id: '2',
-    account: 'C6 Bank',
-    type: 'Freelancer',
-    amount: 'R$ 900,00',
-    date: '01/03/2026',
-    description: 'Uma descrição aqui',
-  },
-  {
-    id: '3',
-    account: 'C6 Bank',
-    type: 'Décimo',
-    amount: 'R$ 900,00',
-    date: '01/03/2026',
-    description: 'Uma descrição aqui',
-  },
-  {
-    id: '4',
-    account: 'C6 Bank',
-    type: 'PLR',
-    amount: 'R$ 900,00',
-    date: '01/03/2026',
-    description: 'Uma descrição aqui',
-  },
-  {
-    id: '5',
-    account: 'C6 Bank',
-    type: 'Outros',
-    amount: 'R$ 900,00',
-    date: '01/03/2026',
-    description: 'Uma descrição aqui',
-  },
-  {
-    id: '6',
-    account: 'C6 Bank',
-    type: 'Outro',
-    amount: 'R$ 900,00',
-    date: '01/03/2026',
-    description: 'Uma descrição aqui',
-  },
-  {
-    id: '7',
-    account: 'C6 Bank',
-    type: 'Outro',
-    amount: 'R$ 900,00',
-    date: '01/03/2026',
-    description: 'Uma descrição aqui',
-  },
-  {
-    id: '8',
-    account: 'C6 Bank',
-    type: 'Outro',
-    amount: 'R$ 900,00',
-    date: '01/03/2026',
-    description: 'Uma descrição aqui',
-  },
-];
-
-export function CurrentIncomes() {
+export function CurrentIncomes(props: CurrentIncomesProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Entradas de Março</Text>
       <View style={styles.headers}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>{COLUMN.date}</Text>
+          <Text style={styles.headerText}>{CurrentIncomesColumns.date}</Text>
         </View>
         <View style={styles.header}>
-          <Text style={styles.headerText}>{COLUMN.amount}</Text>
+          <Text style={styles.headerText}>{CurrentIncomesColumns.amount}</Text>
         </View>
         <View style={styles.header}>
-          <Text style={styles.headerText}>{COLUMN.tipo}</Text>
+          <Text style={styles.headerText}>{CurrentIncomesColumns.type}</Text>
         </View>
       </View>
-      <FlatList
-        data={DATA}
-        renderItem={({ item }) => (
-          <TouchableHighlight onPress={() => alert('teste')}>
-            <View style={styles.row}>
-              <View style={styles.income}>
-                <Text style={styles.incomeText}>{item.date}</Text>
-              </View>
-              <View style={styles.income}>
-                <Text style={styles.incomeText}>{item.amount}</Text>
-              </View>
-              <View style={styles.income}>
-                <Text style={styles.incomeText}>{item.type}</Text>
-              </View>
-            </View>
-          </TouchableHighlight>
+      <View style={styles.body}>
+        {props.isLoading ? (
+          <ActivityIndicator
+            size={'large'}
+            color={darkColors.primary}
+            style={styles.loading}
+          />
+        ) : (
+          <FlatList
+            data={props.incomes.filter((i) => i.status == IncomeStatus.RECEIVED)}
+            renderItem={({ item }) => (
+              <TouchableHighlight onPress={() => alert('teste')}>
+                <View style={styles.row}>
+                  <View style={styles.income}>
+                    <Text style={styles.incomeText}>{item.date}</Text>
+                  </View>
+                  <View style={styles.income}>
+                    <Text style={styles.incomeText}>{item.amount}</Text>
+                  </View>
+                  <View style={styles.income}>
+                    <Text style={styles.incomeText}>{item.type}</Text>
+                  </View>
+                </View>
+              </TouchableHighlight>
+            )}
+            keyExtractor={(item) => item.id.toString()}
+          />
         )}
-        keyExtractor={(item) => item.id}
-      />
+      </View>
     </View>
   );
 }

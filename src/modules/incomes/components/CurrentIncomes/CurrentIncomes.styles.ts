@@ -28,6 +28,9 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.bold,
     fontSize: fontSizes.body,
   },
+  body: {
+    flex: 1,
+  },
   row: {
     flexDirection: 'row',
     gap: spacing.sm,
@@ -42,5 +45,9 @@ export const styles = StyleSheet.create({
     color: darkColors.textPrimary,
     fontFamily: fonts.regular,
     fontSize: fontSizes.body,
+  },
+  loading: {
+    alignItems: 'center',
+    flex: 1,
   },
 });
