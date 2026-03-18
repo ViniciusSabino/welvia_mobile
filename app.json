@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "financial-targets-mobile",
-    "slug": "financial-targets-mobile",
+    "name": "welvia-mobile",
+    "slug": "welvia-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

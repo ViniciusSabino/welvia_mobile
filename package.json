@@ -1,5 +1,5 @@
 {
-  "name": "financial-targets-mobile",
+  "name": "welvia-mobile",
   "version": "1.0.0",
   "main": "src/app/index.ts",
   "scripts": {
