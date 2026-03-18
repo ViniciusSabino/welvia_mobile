@@ -31,16 +31,16 @@ export const styles = StyleSheet.create({
     gap: spacing.sm,
     paddingBottom: spacing.sm,
   },
-  legendColorBody: {
+  legendColor: {
     alignItems: 'center',
     backgroundColor: darkColors.highlight,
     flex: 1,
   },
-  legendPercentageBody: {
+  legendPercentage: {
     backgroundColor: darkColors.highlight,
     flex: 1,
   },
-  legendItemBody: {
+  legendItem: {
     backgroundColor: darkColors.highlight,
     flex: 2,
   },

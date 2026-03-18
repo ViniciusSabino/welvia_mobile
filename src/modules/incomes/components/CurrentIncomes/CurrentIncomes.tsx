@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import { styles } from './CurrentIncomes.styles';
-import { CurrentIncomesColumns, IncomeStatus } from './CurrentIncomes.constants';
+import { CurrentIncomesColumns } from './CurrentIncomes.constants';
 import { CurrentIncomesProps, Income } from './CurrentIncomes.types';
 import { darkColors } from '@/shared/themes';
 import { AmountUtil } from '@/shared/utils/amount.util';
@@ -20,21 +20,30 @@ const renderLoading = () => (
 const renderCurrentIncomesList = (incomes: Income[]) => (
   <FlatList
     data={incomes}
-    renderItem={({ item }) => (
-      <TouchableHighlight onPress={() => alert('teste')}>
-        <View style={styles.row}>
-          <View style={styles.income}>
-            <Text style={styles.incomeText}>{DateUtil.formatISODateToBR(item.date)}</Text>
+    renderItem={({ item }) => {
+      const isFutureIncome = DateUtil.isFutureDate(item.date);
+
+      return (
+        <TouchableHighlight onPress={() => alert('teste')}>
+          <View style={styles.row}>
+            <View style={styles.income}>
+              <Text style={isFutureIncome ? styles.futureIncomeText : styles.incomeText}>
+                {DateUtil.formatISODateToBR(item.date)}{' '}
+                {isFutureIncome && `(${DateUtil.diffInDays(item.date)}d)`}
+              </Text>
+            </View>
+            <View style={styles.income}>
+              <Text style={styles.incomeText}>
+                {AmountUtil.formatAmount(item.amount)}
+              </Text>
+            </View>
+            <View style={styles.income}>
+              <Text style={styles.incomeText}>{item.type}</Text>
+            </View>
           </View>
-          <View style={styles.income}>
-            <Text style={styles.incomeText}>{AmountUtil.formatAmount(item.amount)}</Text>
-          </View>
-          <View style={styles.income}>
-            <Text style={styles.incomeText}>{item.type}</Text>
-          </View>
-        </View>
-      </TouchableHighlight>
-    )}
+        </TouchableHighlight>
+      );
+    }}
     keyExtractor={(item) => item.id.toString()}
   />
 );

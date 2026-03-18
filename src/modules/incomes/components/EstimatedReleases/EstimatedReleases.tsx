@@ -4,7 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 import { styles } from './EstimatedReleases.styles';
 import { PieChart } from '@/shared/components/PieChart/PieChart';
-import { PieChartLegend } from '@/shared/components/PieChart/PieChart.types';
+import { ChartLegend } from '@/shared/components/PieChart/PieChart.types';
 import { EstimatedReleasesProps, SummaryPerType } from './EstimatedReleases.types';
 import { AmountUtil } from '@/shared/utils/amount.util';
 import { darkColors } from '@/shared/themes';
@@ -14,7 +14,7 @@ const renderLoading = () => (
 );
 
 export function EstimatedReleases(props: EstimatedReleasesProps) {
-  const [pieChartLegend, setPieChartLegend] = useState([] as Array<PieChartLegend>);
+  const [chartLegend, setChartLegend] = useState([] as Array<ChartLegend>);
 
   const { summaryIncomes, isLoading } = props;
 
@@ -26,28 +26,29 @@ export function EstimatedReleases(props: EstimatedReleasesProps) {
           accessor="amount"
           height={255}
           legendField="type"
-          getPierChartLegend={(pieChartLegend: Array<PieChartLegend>) => {
-            setPieChartLegend(pieChartLegend);
+          getPierChartLegend={(pieChartLegend: Array<ChartLegend>) => {
+            setChartLegend(pieChartLegend);
           }}
         ></PieChart>
       </View>
       <FlatList
-        data={pieChartLegend}
+        scrollEnabled={false}
+        data={chartLegend}
         renderItem={({ item }) => (
           <View style={styles.legendRow} key={item.label}>
-            <View style={styles.legendColorBody}>
+            <View style={styles.legendColor}>
               <MaterialIcons name="circle" size={28} color={item.color} />
             </View>
-            <View style={styles.legendPercentageBody}>
+            <View style={styles.legendPercentage}>
               <Text style={styles.legendText}>{item.percentage}</Text>
             </View>
-            <View style={styles.legendItemBody}>
+            <View style={styles.legendItem}>
               <Text style={styles.legendText}>
                 {AmountUtil.formatAmount(item.value)}
                 {''}
               </Text>
             </View>
-            <View style={styles.legendItemBody}>
+            <View style={styles.legendItem}>
               <Text style={styles.legendText}>{item.label}</Text>
             </View>
           </View>

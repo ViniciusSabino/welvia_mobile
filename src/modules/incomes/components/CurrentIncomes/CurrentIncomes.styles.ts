@@ -47,6 +47,11 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.regular,
     fontSize: fontSizes.body,
   },
+  futureIncomeText: {
+    color: darkColors.textSecondary,
+    fontFamily: fonts.regular,
+    fontSize: fontSizes.body,
+  },
   loading: {
     alignItems: 'center',
     flex: 1,
