@@ -14,8 +14,9 @@ export const createStyle = (currentIncomeTypeChartData: ChartData | undefined) =
       alignItems: 'center',
       backgroundColor: darkColors.highlight,
       borderRadius: 20,
+      flexDirection: 'column',
       elevation: 5,
-      height: '50%',
+      height: '45%',
       width: '90%',
       shadowColor: darkColors.surface,
       shadowOffset: {
@@ -26,9 +27,9 @@ export const createStyle = (currentIncomeTypeChartData: ChartData | undefined) =
       shadowRadius: 4,
     },
     header: {
+      alignSelf: 'stretch',
       flexDirection: 'column',
-      height: 70,
-      width: '100%',
+      height: 80,
     },
     categoryHeader: {
       backgroundColor: currentIncomeTypeChartData?.color,
@@ -37,9 +38,9 @@ export const createStyle = (currentIncomeTypeChartData: ChartData | undefined) =
     categoryTextContent: {
       alignContent: 'center',
       flexDirection: 'row',
-      gap: spacing.xs,
+      gap: spacing.md,
       justifyContent: 'center',
-      paddingTop: spacing.sm,
+      paddingTop: spacing.md,
     },
     categoryText: {
       color: darkColors.primary,
@@ -48,23 +49,46 @@ export const createStyle = (currentIncomeTypeChartData: ChartData | undefined) =
       textTransform: 'uppercase',
     },
     body: {
+      alignSelf: 'stretch',
       flex: 1,
     },
-    button: {
-      borderRadius: 20,
-      padding: spacing.md,
+    inputArea: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      gap: spacing.lg,
+      paddingBottom: spacing.md,
+      paddingLeft: spacing.md,
+      paddingRight: spacing.md,
+    },
+    textInputLabel: {
+      color: darkColors.primary,
+      fontFamily: fonts.regular,
+      fontSize: fontSizes.body,
+    },
+    textInput: {
+      borderColor: darkColors.divider,
+      borderBottomWidth: 2,
+      color: darkColors.textPrimary,
+      flex: 1,
+      fontFamily: fonts.regular,
+      fontSize: fontSizes.body,
+    },
+    footer: {
+      alignSelf: 'stretch',
+      flexDirection: 'row',
+    },
+    textSave: {
+      color: darkColors.primary,
+      fontFamily: fonts.regular,
+      fontSize: fontSizes.body,
+    },
+    buttonSave: {
+      flex: 1,
+      justifyContent: 'center',
+      paddingLeft: spacing.md,
     },
     buttonClose: {
-      backgroundColor: darkColors.divider,
-    },
-    textStyle: {
-      color: darkColors.primary,
-      fontSize: fontSizes.body,
-      fontFamily: fonts.bold,
-      textAlign: 'center',
-      textTransform: 'uppercase',
-    },
-    modalText: {
-      textAlign: 'center',
+      padding: spacing.sm,
+      paddingRight: spacing.md,
     },
   });
