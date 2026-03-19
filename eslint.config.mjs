@@ -1,15 +1,15 @@
 // eslint.config.mjs
-import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
-import reactPlugin from "eslint-plugin-react";
-import reactHooksPlugin from "eslint-plugin-react-hooks";
-import reactNativePlugin from "eslint-plugin-react-native";
-import prettierRecommended from "eslint-plugin-prettier/recommended";
-import globals from "globals";
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import reactNativePlugin from 'eslint-plugin-react-native';
+import prettierRecommended from 'eslint-plugin-prettier/recommended';
+import globals from 'globals';
 
 export default tseslint.config(
   {
-    ignores: ["dist", "node_modules"],
+    ignores: ['dist', 'node_modules'],
   },
 
   eslint.configs.recommended,
@@ -27,7 +27,7 @@ export default tseslint.config(
         ...globals.browser,
         ...globals.jest,
       },
-      sourceType: "module",
+      sourceType: 'module',
       parserOptions: {
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
@@ -38,48 +38,48 @@ export default tseslint.config(
   {
     rules: {
       // 🔥 TypeScript
-      "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/explicit-module-boundary-types": "warn",
-      "@typescript-eslint/consistent-type-imports": "error",
-      "@typescript-eslint/no-floating-promises": "warn",
-      "@typescript-eslint/strict-boolean-expressions": "warn",
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/explicit-module-boundary-types': 'warn',
+      '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/no-floating-promises': 'warn',
+      '@typescript-eslint/strict-boolean-expressions': 'warn',
 
       // 🧠 Código limpo
-      complexity: ["warn", 10],
-      "max-lines-per-function": ["warn", 80],
-      "max-depth": ["warn", 3],
-      "max-params": ["warn", 4],
+      complexity: ['warn', 10],
+      'max-lines-per-function': ['warn', 80],
+      'max-depth': ['warn', 3],
+      'max-params': ['warn', 4],
 
       // ⚛️ React
-      "react/react-in-jsx-scope": "off",
-      "react/prop-types": "off",
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
 
       // 🪝 Hooks
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
 
       // 📱 React Native
-      "react-native/no-inline-styles": "warn",
-      "react-native/no-color-literals": "off",
+      'react-native/no-inline-styles': 'warn',
+      'react-native/no-color-literals': 'off',
 
       // 🧱 Boas práticas gerais
-      eqeqeq: ["error", "always"],
-      curly: ["error", "all"],
-      "no-console": ["warn"],
-      "no-eval": "error",
-      "no-implied-eval": "error",
-      "no-throw-literal": "error",
+      eqeqeq: ['error', 'always'],
+      curly: ['error', 'all'],
+      'no-console': ['warn'],
+      'no-eval': 'error',
+      'no-implied-eval': 'error',
+      'no-throw-literal': 'error',
 
       // 📦 Organização de imports
-      "import/order": [
-        "error",
+      'import/order': [
+        'error',
         {
-          groups: ["builtin", "external", "internal"],
-          "newlines-between": "always",
-          alphabetize: { order: "asc", caseInsensitive: true },
+          groups: ['builtin', 'external', 'internal'],
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],
-      "sort-imports": ["error", { ignoreDeclarationSort: true }],
+      'sort-imports': ['error', { ignoreDeclarationSort: true }],
     },
   },
 );

@@ -1,10 +1,6 @@
 import z from 'zod';
 
-import {
-  IncomeListSchema,
-  IncomeSchema,
-  PaginatedIncomesSchema,
-} from '../../schemas/income.schema';
+import { IncomeListSchema, IncomeSchema, PaginatedIncomesSchema } from '../../schemas/income.schema';
 
 type CurrentIncomesProps = {
   incomes: Array<Income>;

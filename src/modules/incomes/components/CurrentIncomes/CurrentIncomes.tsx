@@ -1,69 +1,17 @@
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableHighlight,
-  ActivityIndicator,
-} from 'react-native';
+import { View, Text, FlatList, TouchableHighlight, ActivityIndicator } from 'react-native';
 
 import { styles } from './CurrentIncomes.styles';
 import { CurrentIncomesColumns } from './CurrentIncomes.constants';
-import { CurrentIncomesProps, Income } from './CurrentIncomes.types';
+import { CurrentIncomesProps } from './CurrentIncomes.types';
 import { darkColors } from '@/shared/themes';
 import { AmountUtil } from '@/shared/utils/amount.util';
 import { DateUtil } from '@/shared/utils/date.util';
 import { useIncomesScreenStore } from '../../screens/IncomesScreenStore';
 
-const renderLoading = () => (
-  <ActivityIndicator size={'large'} color={darkColors.primary} style={styles.loading} />
-);
-
-const renderCurrentIncomesList = (
-  incomes: Income[],
-  setModalIncomeVisible: React.Dispatch<React.SetStateAction<boolean>>,
-  setCurrentIncomeDetails: (income: Income) => void,
-) => (
-  <FlatList
-    data={incomes}
-    renderItem={({ item }) => {
-      const isFutureIncome = DateUtil.isFutureDate(item.date);
-
-      return (
-        <TouchableHighlight
-          onPress={() => {
-            setCurrentIncomeDetails(item);
-            setModalIncomeVisible(true);
-          }}
-        >
-          <View style={styles.row}>
-            <View style={styles.income}>
-              <Text style={styles.incomeText}>
-                {DateUtil.formatISODateToBR(item.date)}{' '}
-                {isFutureIncome && `(${DateUtil.diffInDays(item.date)}d)`}
-              </Text>
-            </View>
-            <View style={styles.income}>
-              <Text style={styles.incomeText}>
-                {AmountUtil.formatAmount(item.amount)}
-              </Text>
-            </View>
-            <View style={styles.income}>
-              <Text style={styles.incomeText}>{item.type}</Text>
-            </View>
-          </View>
-        </TouchableHighlight>
-      );
-    }}
-    keyExtractor={(item) => item.id.toString()}
-  />
-);
-
 export function CurrentIncomes(props: CurrentIncomesProps) {
   const { incomes, isLoading, setModalIncomeVisible } = props;
 
-  const setCurrentIncomeDetails = useIncomesScreenStore(
-    (state) => state.setCurrentIncomeDetails,
-  );
+  const setCurrentIncomeDetails = useIncomesScreenStore((state) => state.setCurrentIncomeDetails);
 
   return (
     <View style={styles.container}>
@@ -80,13 +28,37 @@ export function CurrentIncomes(props: CurrentIncomesProps) {
         </View>
       </View>
       <View style={styles.body}>
-        {isLoading
-          ? renderLoading()
-          : renderCurrentIncomesList(
-              incomes,
-              setModalIncomeVisible,
-              setCurrentIncomeDetails,
+        {isLoading ? (
+          <ActivityIndicator size={'large'} color={darkColors.primary} style={styles.loading} />
+        ) : (
+          <FlatList
+            data={incomes}
+            renderItem={({ item }) => (
+              <TouchableHighlight
+                onPress={() => {
+                  setCurrentIncomeDetails(item);
+                  setModalIncomeVisible(true);
+                }}
+              >
+                <View style={styles.row}>
+                  <View style={styles.income}>
+                    <Text style={styles.incomeText}>
+                      {DateUtil.formatISODateToBR(item.date)}{' '}
+                      {DateUtil.isFutureDate(item.date) && `(${DateUtil.diffInDays(item.date)}d)`}
+                    </Text>
+                  </View>
+                  <View style={styles.income}>
+                    <Text style={styles.incomeText}>{AmountUtil.formatAmount(item.amount)}</Text>
+                  </View>
+                  <View style={styles.income}>
+                    <Text style={styles.incomeText}>{item.type}</Text>
+                  </View>
+                </View>
+              </TouchableHighlight>
             )}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        )}
       </View>
     </View>
   );

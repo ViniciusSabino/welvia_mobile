@@ -57,9 +57,7 @@ export function RootNavigator() {
           component={HomeScreen}
           options={{
             lazy: true,
-            drawerIcon: ({ color, size }) => (
-              <MaterialIcons name="home" size={size} color={color} />
-            ),
+            drawerIcon: ({ color, size }) => <MaterialIcons name="home" size={size} color={color} />,
           }}
         />
         <Drawer.Screen
@@ -67,9 +65,7 @@ export function RootNavigator() {
           navigationKey={Routes.INCOMES}
           component={IncomesScreen}
           options={{
-            drawerIcon: ({ color, size }) => (
-              <MaterialIcons name="arrow-downward" size={size} color={color} />
-            ),
+            drawerIcon: ({ color, size }) => <MaterialIcons name="arrow-downward" size={size} color={color} />,
           }}
         ></Drawer.Screen>
         <Drawer.Screen
@@ -77,9 +73,7 @@ export function RootNavigator() {
           navigationKey={Routes.ESSENTIAL_OUTFLOWS}
           component={EssentialOutflowScreen}
           options={{
-            drawerIcon: ({ color, size }) => (
-              <MaterialIcons name="arrow-upward" size={size} color={color} />
-            ),
+            drawerIcon: ({ color, size }) => <MaterialIcons name="arrow-upward" size={size} color={color} />,
           }}
         />
         <Drawer.Screen
@@ -87,9 +81,7 @@ export function RootNavigator() {
           navigationKey={Routes.PLANNED_ALLOCATIONS}
           component={PlannedAllocationsScreen}
           options={{
-            drawerIcon: ({ color, size }) => (
-              <MaterialIcons name="savings" size={size} color={color} />
-            ),
+            drawerIcon: ({ color, size }) => <MaterialIcons name="savings" size={size} color={color} />,
           }}
         />
         <Drawer.Screen
@@ -97,9 +89,7 @@ export function RootNavigator() {
           navigationKey={Routes.CREDIT_MANAGEMENT}
           component={CreditManagementScreen}
           options={{
-            drawerIcon: ({ color, size }) => (
-              <MaterialIcons name="credit-card" size={size} color={color} />
-            ),
+            drawerIcon: ({ color, size }) => <MaterialIcons name="credit-card" size={size} color={color} />,
           }}
         />
         <Drawer.Screen
@@ -107,9 +97,7 @@ export function RootNavigator() {
           navigationKey={Routes.SUBSCRIPTIONS}
           component={SubscriptionsScreen}
           options={{
-            drawerIcon: ({ color, size }) => (
-              <MaterialIcons name="shop" size={size} color={color} />
-            ),
+            drawerIcon: ({ color, size }) => <MaterialIcons name="shop" size={size} color={color} />,
           }}
         />
         <Drawer.Screen
@@ -117,9 +105,7 @@ export function RootNavigator() {
           navigationKey={Routes.UNLIMITED_SPENDING}
           component={UnlimitedSpendingScreen}
           options={{
-            drawerIcon: ({ color, size }) => (
-              <MaterialIcons name="shopping-cart" size={size} color={color} />
-            ),
+            drawerIcon: ({ color, size }) => <MaterialIcons name="shopping-cart" size={size} color={color} />,
           }}
         />
         <Drawer.Screen
@@ -127,9 +113,7 @@ export function RootNavigator() {
           navigationKey={Routes.CLOSING}
           component={ClosingScreen}
           options={{
-            drawerIcon: ({ color, size }) => (
-              <MaterialIcons name="calculate" size={size} color={color} />
-            ),
+            drawerIcon: ({ color, size }) => <MaterialIcons name="calculate" size={size} color={color} />,
           }}
         />
       </Drawer.Navigator>

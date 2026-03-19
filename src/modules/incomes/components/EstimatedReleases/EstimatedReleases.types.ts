@@ -1,9 +1,6 @@
 import z from 'zod';
 
-import {
-  IncomesSummarySchema,
-  summaryPerType,
-} from '../../schemas/summaryIncomes.schema';
+import { IncomesSummarySchema, summaryPerType } from '../../schemas/summaryIncomes.schema';
 
 type EstimatedReleasesProps = {
   summaryIncomes: SummaryIncomes;

@@ -10,32 +10,16 @@ const renderIncomeTypeIcon = (incomeType: string | undefined) =>
     ['Empresarial', <MaterialIcons name="work" size={24} color={darkColors.primary} />],
     ['Variável', <MaterialIcons name="360" size={24} color={darkColors.primary} />],
     ['Salário', <MaterialIcons name="payments" size={24} color={darkColors.primary} />],
-    [
-      'Investimentos',
-      <MaterialIcons name="currency-bitcoin" size={24} color={darkColors.primary} />,
-    ],
+    ['Investimentos', <MaterialIcons name="currency-bitcoin" size={24} color={darkColors.primary} />],
     ['Bônus', <MaterialIcons name="upgrade" size={24} color={darkColors.primary} />],
-    [
-      'Outros',
-      <MaterialIcons name="drag-indicator" size={24} color={darkColors.primary} />,
-    ],
-    [
-      undefined,
-      <MaterialIcons name="disabled-by-default" size={24} color={darkColors.primary} />,
-    ],
+    ['Outros', <MaterialIcons name="drag-indicator" size={24} color={darkColors.primary} />],
+    [undefined, <MaterialIcons name="disabled-by-default" size={24} color={darkColors.primary} />],
   ]).get(incomeType);
 
 export function ModalIncomeDetails(props: ModalIncomeDetailsProps) {
-  const {
-    currentIncome,
-    incomeTypeChartData,
-    modalIncomeVisible,
-    setModalIncomeVisible,
-  } = props;
+  const { currentIncome, incomeTypeChartData, modalIncomeVisible, setModalIncomeVisible } = props;
 
-  const currentTypeChartData = incomeTypeChartData.find(
-    (income) => income.label == currentIncome?.type,
-  );
+  const currentTypeChartData = incomeTypeChartData.find((income) => income.label == currentIncome?.type);
 
   const styles = createStyle(currentTypeChartData);
 

@@ -15,16 +15,12 @@ export function IncomesScreen() {
 
   const styles = createStyle(modalIncomeVisible);
 
-  const currentIncomeDetails = useIncomesScreenStore(
-    (state) => state.currentIncomeDetails,
-  );
+  const currentIncomeDetails = useIncomesScreenStore((state) => state.currentIncomeDetails);
   const incomeTypeChartData = useIncomesScreenStore((state) => state.incomeTypeChartData);
 
-  const { incomes, isLoadingCurrentIncomes, useCurrentIncomesError } =
-    useCurrentIncomes();
+  const { incomes, isLoadingCurrentIncomes, useCurrentIncomesError } = useCurrentIncomes();
 
-  const { summaryIncomes, isLoadingSummary, useSummaryIncomesError } =
-    useSummaryIncomes();
+  const { summaryIncomes, isLoadingSummary, useSummaryIncomesError } = useSummaryIncomes();
 
   return (
     <>

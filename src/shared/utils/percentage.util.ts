@@ -13,12 +13,6 @@ export class PercentageUtil {
       return '0%';
     }
 
-    return (
-      decimalValue
-        .dividedBy(decimalTotal)
-        .times(100)
-        .toDecimalPlaces(0, Decimal.ROUND_HALF_UP)
-        .toString() + '%'
-    );
+    return decimalValue.dividedBy(decimalTotal).times(100).toDecimalPlaces(0, Decimal.ROUND_HALF_UP).toString() + '%';
   };
 }
